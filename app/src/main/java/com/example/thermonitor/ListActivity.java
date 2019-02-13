@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 public class ListActivity extends AppCompatActivity {
             int[] IMAGES= {R.drawable.sql,R.drawable.java,R.drawable.javascript,R.drawable.c,R.drawable.python,R.drawable.cc,R.drawable.php};
-            String [] NAMES={"SQL","JAVA","JAVA SCRIPT","C#","PYTHON","C++","PHP"};
+            String [] NAMES={"SQL","JAVA","JAVA SCRIPT","c#","PYTHON","c++","PHP"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
