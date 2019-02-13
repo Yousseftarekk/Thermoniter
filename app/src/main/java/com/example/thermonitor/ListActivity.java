@@ -24,6 +24,7 @@ public class ListActivity extends AppCompatActivity {
         ListView listView=(ListView) findViewById(R.id.listView);
         //ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,IMAGES);
         //listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
         CustomAdapter customAdapter=new CustomAdapter();
         listView.setAdapter(customAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
