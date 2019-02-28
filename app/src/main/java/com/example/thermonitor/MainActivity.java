@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(MainActivity.this,ListActivity.class);
+                Intent i= new Intent(MainActivity.this,WiFiScannerActivity.class);
                 startActivity(i);
             }
         });
