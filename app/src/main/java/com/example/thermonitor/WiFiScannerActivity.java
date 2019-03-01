@@ -36,7 +36,7 @@ public class WiFiScannerActivity extends AppCompatActivity {
     private ArrayList<Integer> images=new ArrayList<>();
     private ArrayList<String> mac=new ArrayList<>();
     private ArrayList<String> SSID=new ArrayList<>();
-    private CustomAdapter customAdapter;
+    private CustomAdapter customAdapterr;
 
 
 
@@ -62,8 +62,8 @@ public class WiFiScannerActivity extends AppCompatActivity {
                     LocationService.MY_PERMISSION_ACCESS_COURSE_LOCATION );
         }*/
         listVieww=findViewById(R.id.listView20);
-         customAdapter=new CustomAdapter();
-        listVieww.setAdapter(customAdapter);
+         customAdapterr=new CustomAdapter();
+        listVieww.setAdapter(customAdapterr);
         listVieww.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -105,12 +105,12 @@ public class WiFiScannerActivity extends AppCompatActivity {
                     for(ScanResult scanResult:results){
                        // arrayList.add(scanResult.SSID);
                        // adapter.notifyDataSetChanged();
-                        Log.d("joe","size of wifi "+results);
-                        if(scanResult.SSID.equals("Youssef's iPhone")){
+                      //  Log.d("joe","size of wifi "+results);
+                        if(scanResult.SSID.equals("ESP1")||scanResult.SSID.equals("Esp")){
                             SSID.add(scanResult.SSID);
                             images.add(R.drawable.esp);
                             mac.add(scanResult.BSSID);
-                            customAdapter.notifyDataSetChanged();
+                            customAdapterr.notifyDataSetChanged();
 
 
 
