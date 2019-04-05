@@ -2,6 +2,7 @@ package com.example.thermonitor;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,18 +35,23 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         editTextEmail=(EditText)findViewById(R.id.editText8);
         editTextPassword=(EditText)findViewById(R.id.editText11);
         register = (Button)findViewById(R.id.button3);
+        final MediaPlayer np=MediaPlayer.create(this,R.raw.click);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 registerUser();
+                np.start();
+
             }
         });
+
         login = (Button)findViewById(R.id.button4);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent x= new Intent(RegisterActivity.this,MainActivity.class);
                 startActivity(x);
+                np.start();
             }
         });
 

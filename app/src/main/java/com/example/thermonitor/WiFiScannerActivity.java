@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.support.v4.app.ActivityCompat;
@@ -37,6 +38,7 @@ public class WiFiScannerActivity extends AppCompatActivity {
     private ArrayList<String> mac=new ArrayList<>();
     private ArrayList<String> SSID=new ArrayList<>();
     private CustomAdapter customAdapterr;
+   // private ArrayList<String> bye=new ArrayList<>();
 
 
 
@@ -45,15 +47,20 @@ public class WiFiScannerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wi_fi_scanner);
         buttonScan = findViewById(R.id.button2);
+        final MediaPlayer mp = MediaPlayer.create(this,R.raw.click);
+
         buttonScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 scanWifi();
+                mp.start();
 
 
             }
 
         });
+
+
 
 
         /*if ( ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_COARSE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
@@ -75,7 +82,7 @@ public class WiFiScannerActivity extends AppCompatActivity {
 
         wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         if(!wifiManager.isWifiEnabled()){
-            Toast.makeText(this, "WiFi is Disabled.. Check your connection",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "WiFi is Disabled.. We'll take care of this :) ",Toast.LENGTH_SHORT).show();
             wifiManager.setWifiEnabled(true);
 
         }
@@ -91,7 +98,7 @@ public class WiFiScannerActivity extends AppCompatActivity {
         arrayList.clear();
         registerReceiver(wifiReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
         wifiManager.startScan();
-        Toast.makeText(this,"Scanning WiFi...",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Scanning WiFi, Please Wait!",Toast.LENGTH_SHORT).show();
 
         }
             BroadcastReceiver wifiReceiver= new BroadcastReceiver() {
@@ -106,16 +113,20 @@ public class WiFiScannerActivity extends AppCompatActivity {
                        // arrayList.add(scanResult.SSID);
                        // adapter.notifyDataSetChanged();
                       //  Log.d("joe","size of wifi "+results);
-                        if(scanResult.SSID.equals("ESP1")||scanResult.SSID.equals("Esp")){
+                        if(scanResult.SSID.equals("ESP1")||scanResult.SSID.equals("ESP2")){
                             SSID.add(scanResult.SSID);
                             images.add(R.drawable.esp);
                             mac.add(scanResult.BSSID);
                             customAdapterr.notifyDataSetChanged();
 
-
-
                         }
-
+                        if(scanResult.SSID.equals("NETGEAR20")){
+                            SSID.add(scanResult.SSID);
+                            images.add(R.drawable.unnamed);
+                            mac.add(scanResult.BSSID);
+                            customAdapterr.notifyDataSetChanged();
+                        }
+                        
                     }
                 }
             };
